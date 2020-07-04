@@ -1,12 +1,12 @@
-import { register } from './framework/IoC';
-import { getEvents } from './framework';
+import { getEvents, register, loadScene } from './framework';
+import './scenes';
+
 const canvas = <HTMLCanvasElement> document.getElementById("game"); 
 const ctx: CanvasRenderingContext2D = canvas.getContext("2d");
 
 register('canvas', canvas);
 register('context', ctx);
 
-const { loadScene } = require('./scenes');
 const scene = loadScene("Menu");
 
 let lastUpdate;

@@ -1,6 +1,6 @@
 import sprite from './sprite.png';
 
-import { GameObject, halfScreen, SpriteMetadata, loadSprite, Renderer, Rect, createAnimation, Animator } from "../../framework";
+import { GameObject, halfScreen, SpriteMetadata, loadSprite, Renderer, Rect, createAnimation, Animator, Autowired } from "../../framework";
 
 export class Player extends GameObject {
   @loadSprite(sprite, 32, 32, { 

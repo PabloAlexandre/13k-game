@@ -8,3 +8,4 @@ export * from './IoC';
 export * from './Screen';
 export * from './Sprite';
 export * from './Types';
+export * from './SceneManager';
