@@ -19,13 +19,28 @@ export const onDraw = <T>(target, propertyKey: keyof T, descriptor: PropertyDesc
       hasSetted = true;
 
       return newFn;
-    },
-    set() {
-
     }
   }
 }
 
 export const onUpdate = <T>(target: T, propertyKey: keyof T, descriptor: PropertyDescriptor) => {
-  addEvent(descriptor.value, 'update');
+  const fn = descriptor.value;
+  let hasSetted = false;
+
+  return {
+    configurable: true,
+    get() {
+      const newFn = fn.bind(this);
+
+      if(!hasSetted) {
+        addEvent(() => {
+          newFn();
+        }, 'update');
+      }
+      
+      hasSetted = true;
+
+      return newFn;
+    }
+  }
 }

@@ -70,8 +70,16 @@ export class Animator extends Component {
     } 
   }
 
+  IsPlaying(name: string) {
+    return this.clip.name === name;
+  }
+
   play(animName?: string) {
     this.clip = animName ? this.clips.find(it => it.name === animName) : this.clips[0];
+
+    const frame = this.clip.frames[0];
+    this.gameObject.renderer.uv.setCoordinates(frame.x, frame.y);
+    
     this.frameCount = 0;
     this.isPlaying = true;
   }
