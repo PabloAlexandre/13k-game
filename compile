@@ -1,0 +1,14 @@
+#!/bin/bash
+
+BUILD_DIR='./dist'
+
+if [ -d "$BUILD_DIR" ]; then rm -Rf $BUILD_DIR; fi
+
+npx parcel build index.html --no-source-maps 
+
+buildName=$(find $BUILD_DIR -type f -iname "app.*.js")
+
+npx google-closure-compiler --rewrite_polyfills=false --js=$buildName --language_out ECMASCRIPT_2015 --js_output_file=dist/app.js
+mv dist/app.js $buildName
+
+zip -FSr game.zip dist

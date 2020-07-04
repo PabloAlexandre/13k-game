@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "CommonJS",
+    "outDir": "build",
+    "sourceRoot": "src",
+    "outFile": "build/app.js",
+    "sourceMap": false,
+    "strict": false,
+    "noResolve": false,
+
+    "experimentalDecorators": true,
+    "lib": ["ES2017",  "dom", "ES2016"]
+  }
+}
